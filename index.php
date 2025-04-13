@@ -41,9 +41,6 @@
         <hr class="espacamentomenus">
         <li><a href="?page=listar">Listar Doadores</a></li>
         <hr class="espacamentomenus">
-        <li><a href="?page=listar2">Informações Principais</a></li>
-        <hr class="espacamentomenus">
-
       </ul>
     </div>
 
