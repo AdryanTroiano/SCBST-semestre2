@@ -1,151 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SCBST</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <style>
+        /* Reseta o estilo padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Define o fundo da página */
+        body {
+            background-color: #F5F5F5;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilos do container */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Estilos do título */
+        h2 {
+            color: #a4161a;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos do formulário */
+        .textbox {
+            margin-bottom: 20px;
+        }
+
+        .textbox input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Estilo do botão */
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #a4161a;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #8c1414;
+        }
+
+        /* Responsividade para telas pequenas */
+        @media screen and (max-width: 768px) {
+            .login-box {
+                padding: 30px;
+                width: 80%;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .textbox input {
+                font-size: 14px;
+            }
+
+            input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+
+        /* Responsividade para telas menores que 300px */
+        @media screen and (max-width: 300px) {
+            .login-box {
+                padding: 20px;
+                width: 90%;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .textbox input {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            input[type="submit"] {
+                font-size: 12px;
+                padding: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<header>
-  <nav>
-    <a class="navbar-brand" href="?page=dashboard">
-      <img class="logo" src="logo.png" alt="Logo">
-    </a>
-
-    <!-- Botão do menu -->
-    <button id="abrirMenu" class="hamburguer">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-  </button>
-
-
-    <!-- Menu fullscreen -->
-    <div id="menuFullscreen" class="menu-fullscreen">
-    <button id="fecharMenu" class="fechar">[ × ]</button>
-<a href="?page=dashboard" class="icone-home">
-  <i class="fas fa-home"></i>
-</a>
-</a>
-      <ul class="linkshamb">
-        <h2 class="menuhamb">Menu</h2>
-        <li><a href="?page=info">Informações</a></li>
-        <hr class="espacamentomenus">
-        <li><a href="?page=help">Ajuda</a></li>
-        <hr class="espacamentomenus">
-        <h2 class="menuhamb">Menu Doador</h2>
-        <li><a href="?page=novo">Cadastrar Doadores</a></li>
-        <hr class="espacamentomenus">
-        <li><a href="?page=listar">Listar Doadores</a></li>
-        <hr class="espacamentomenus">
-      </ul>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <!-- Definindo o action para redirecionar para index2.php -->
+            <form action="sistema.php" method="POST">
+                <div class="textbox">
+                    <input type="text" name="usuario" placeholder="Usuário" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" name="senha" placeholder="Senha" required>
+                </div>
+                <input type="submit" value="Entrar">
+            </form>
+        </div>
     </div>
-
-    <!-- Menu principal (já existente) -->
-    <div class="navbar-nav">
-      <a class="nav-link" href="?page=info">
-        <ion-icon class="icones" name="information-circle-outline"></ion-icon> Informações
-      </a>
-
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button">
-          <ion-icon class="icones" name="list-circle-outline"></ion-icon> Doador
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="?page=novo">Cadastrar Doadores</a></li>
-          <li><a class="dropdown-item" href="?page=listar">Listar Doadores</a></li>
-        </ul>
-      </div>
-
-      <a class="nav-link" href="?page=help">
-        <ion-icon class="icones" name="help-circle-outline"></ion-icon> Ajuda
-      </a>
-    </div>
-  </nav>
-</header>
-
-<!-- Espaço -->
-<br><br>
-
-<!-- Conteúdo dinâmico -->
-<div class="container">
-  <div class="content">
-    <?php
-      include("config.php");
-      $page = $_REQUEST["page"] ?? 'home';
-      switch($page) {
-        case "novo": include("novo-usuario.php"); break;
-        case "listar": include("listar-usuarios.php"); break;
-        case "salvar": include("salvar-usuario.php"); break;
-        case "editar": include("editar-usuario.php"); break;
-        case "help": include("help.php"); break;
-        case "info": include("info.php"); break;
-        case "listar2": include("listar2.php"); break;
-        case "mapa": include("mapa.php"); break;
-        case "editestoque": include("editar_estoque.php"); break;
-        default: include("dashboard.php");
-      }
-    ?>
-  </div>
-</div>
-
-<!-- Rodapé -->
-<footer>
-  <div class="container">
-    <div class="footer-content">
-      <p>&copy; 2024 Banco de Sangue de Taquaritinga.<br>Todos os direitos reservados</p>
-
-      <div class="footer-address">
-        <p><strong>Navegação:</strong></p>
-        <a href="?page=info" class="footer-link">Informações</a>
-        <a href="?page=help" class="footer-link">Ajuda</a>
-        <a href="?page=novo" class="footer-link">Cadastrar</a>
-        <a href="?page=listar" class="footer-link">Listar Cadastros</a>
-      </div>
-
-      <div class="footer-address">
-        <p><strong>Endereço:</strong></p>
-        <p>
-          <i class="fas fa-map-marker-alt"></i> 
-          <a href="https://www.google.com/maps/place/Fatec+Taquaritinga" class="footer-link" target="_blank">
-            Av. Dr. Flávio Henrique Lemos, 585
-          </a>
-        </p>
-      </div>
-
-      <div class="footer-contact">
-        <p><strong>Contato:</strong></p>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:contato@bancodesanguetaq.com" class="footer-link">contato@bancodesanguetaq.com</a></p>
-        <p><i class="fas fa-phone"></i> (16) 1234-5678</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Scripts -->
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const abrirMenu = document.getElementById('abrirMenu');
-    const fecharMenu = document.getElementById('fecharMenu');
-    const menuFullscreen = document.getElementById('menuFullscreen');
-
-    abrirMenu.addEventListener('click', function () {
-      menuFullscreen.classList.add('ativo');
-      abrirMenu.classList.add('esconder'); // Esconde o botão
-    });
-
-    fecharMenu.addEventListener('click', function () {
-      menuFullscreen.classList.remove('ativo');
-      abrirMenu.classList.remove('esconder'); // Mostra o botão de novo
-    });
-  });
-</script>
-
-
 </body>
 </html>
