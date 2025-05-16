@@ -61,8 +61,18 @@
       </div>
 
       <a class="nav-link" href="?page=help">
-        <ion-icon class="icones" name="help-circle-outline"></ion-icon> Ajuda
+        <ion-icon name="help-circle-outline"></ion-icon> <span>Ajuda</span>
       </a>
+
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button">
+        <ion-icon class="icones" name="person-circle-outline"></ion-icon> Usuário
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="cadastrousers.php">Cadastrar Usuário</a></li>
+        </ul>
+      </div>
+
     </div>
   </nav>
 </header>

@@ -66,6 +66,8 @@ nav {
     flex-grow: 1;
 }
 
+
+
 /* Quando a tela for 1080px ou menor, esconder a navbar original e mostrar o menu de hambúrguer */
 @media (max-width: 1080px) {
     .navbar-nav {
